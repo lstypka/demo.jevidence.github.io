@@ -14,8 +14,8 @@ reportNgApp.controller('MenuCtrl', ["$scope", "$timeout", "$location", "Executio
                     jQuery(".sidebar .treeview").tree();
                 }, 100);
 
-                var url = $location.path();
-
+            }, function(response) {
+                $scope.noRecords = true;
             });
         };
 

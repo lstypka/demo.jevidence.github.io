@@ -5,6 +5,8 @@ reportNgApp.controller('StatisticsCtrl', ["$scope", "$timeout", "ExecutionServic
         var init = function () {
             RecordsService.getRecords(function (records) {
                $scope.numberOfExecutions = records.length
+            }, function(response) {
+                $scope.noRecords = true;
             });
         };
 

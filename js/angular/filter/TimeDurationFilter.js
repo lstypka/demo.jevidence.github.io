@@ -1,6 +1,5 @@
 reportNgApp.filter('timeDurationFilter', function () {
         return function (millis) {
-            window.console.log("DURATION " + millis);
             var formattedValue = moment.utc(millis).format("HH[h] mm[m] ss[s] SSS[ms]");
             var splitValue = formattedValue.split(" ");
             var count = 0;
@@ -24,7 +23,6 @@ reportNgApp.filter('timeDurationFilter', function () {
                     }
                 }
             }
-                      window.console.log("BEFORE " + formattedValue + " AFTER " + result);
             return result;
         }
     }

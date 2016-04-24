@@ -10,6 +10,8 @@ reportNgApp.service('RecordsService', ["$http", function ($http) {
                         return loadedRecords[i];
                     }
                 }
+            }, function(response) {
+                window.console.log("NO RECORDS");
             });
         } else {
             for (var i = 0; i < loadedRecords.length; i++) {
@@ -21,11 +23,15 @@ reportNgApp.service('RecordsService', ["$http", function ($http) {
         }
     };
 
-    this.getRecords = function (successFn) {
+    this.getRecords = function (successFn, errorFn) {
         $http.get('data/records').success(function (response) {
             loadedRecords = response.records;
             if (successFn) {
                 successFn(loadedRecords);
+            }
+        }).error(function(data, status, headers, config) {
+            if(errorFn) {
+                errorFn(data, status, headers, config);
             }
         });
     };

@@ -2,17 +2,16 @@
 
     <div class="col-md-12">
         <section class="panel">
-            <header class="panel-heading">
-                <span class="label label-test-error">Error</span>
-                <span style="font-weight: bold;">Execution #{{execution.id}}</span>
+            <header  class="panel-heading accordion-toggle" data-toggle="collapse" data-target="#resultContainer" style="cursor: pointer;" >
+                <span style="font-weight: bold;">Result / Execution #{{execution.id}}</span>
                 <span style="float: right; font-weight: bold;">{{execution.startedAt}}</span>
             </header>
-            <div class="panel-body">
+            <div class="panel-body in" id="resultContainer">
                 <div class="row" ng-if="showSearchPanel">
                     <div class="col-md-1"></div>
                     <div class="col-md-2">
                         <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('All')">
-                            <span class="sm-st-icon st-violet"><i class="fa fa-plus-circle"></i></span>
+                            <span class="sm-st-icon added-gradient"><i class="fa fa-plus-circle"></i></span>
 
                             <div class="sm-st-info">
                                 <span>{{execution.passed + execution.errors + execution.failed + execution.skipped}}</span>
@@ -22,7 +21,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Success')">
-                            <span class="sm-st-icon st-green"><i class="fa fa-check-circle"></i></span>
+                            <span class="sm-st-icon success-gradient"><i class="fa fa-check-circle"></i></span>
 
                             <div class="sm-st-info">
                                 <span>{{execution.passed}}</span>
@@ -31,20 +30,8 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Error')">
-                        <span class="sm-st-icon st-violet" style="background-color: #b5302c;"><i
-                                class="fa fa-dot-circle-o"></i></span>
-
-                            <div class="sm-st-info">
-                                <span>{{execution.errors}}</span>
-                                Errors
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
                         <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Failed')">
-                            <span class="sm-st-icon st-red"><i class="fa fa-times-circle"></i></span>
+                            <span class="sm-st-icon failed-gradient"><i class="fa fa-times-circle"></i></span>
 
                             <div class="sm-st-info">
                                 <span>{{execution.failed}}</span>
@@ -53,8 +40,19 @@
                         </div>
                     </div>
                     <div class="col-md-2">
+                        <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Error')">
+                        <span class="sm-st-icon errors-gradient"><i
+                                class="fa fa-dot-circle-o"></i></span>
+
+                            <div class="sm-st-info">
+                                <span>{{execution.errors}}</span>
+                                Errors
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
                         <div class="sm-st clearfix" style="cursor: pointer;" ng-click="selectStatus('Skipped')">
-                            <span class="sm-st-icon st-blue"><i class="fa fa-minus-circle"></i></span>
+                            <span class="sm-st-icon skipped-gradient"><i class="fa fa-minus-circle"></i></span>
 
                             <div class="sm-st-info">
                                 <span>{{execution.skipped}}</span>

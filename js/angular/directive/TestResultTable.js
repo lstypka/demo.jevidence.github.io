@@ -16,6 +16,10 @@ reportNgApp.directive('testsResultTable', [
                     scope.showSearchPanel = true;
                 }
 
+                scope.search = {
+                    textSearch : ''
+                };
+
                 scope.successLevel = true;
                 scope.infoLevel = true;
                 scope.warnLevel = true;

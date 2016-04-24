@@ -7,9 +7,9 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
         var xlabels = [];
 
         var generateCharts = function (intersection) {
+
             timeDifferenceData.splice(0, timeDifferenceData.length);
             xlabels.splice(0, xlabels.length);
-
             for (var i = 0; i < intersection.length; i++) {
                 timeDifferenceData.push([intersection.length - 1 - i, intersection[i].difference]);
                 xlabels.push((i));
@@ -20,8 +20,8 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             {label: "Time difference", data: timeDifferenceData}
         ];
 
-        var findTestName = function(index) {
-            return $scope.intersection[$scope.intersection.length - 1 - index].name;
+        var findTestName = function (index) {
+            return $scope.intersection.length - 1 >= index ? $scope.intersection[$scope.intersection.length - 1 - index].name : "0";
         };
 
         $scope.testsPerformanceChartOptions = {
@@ -64,7 +64,7 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
             },
             tooltip: true,
             tooltipOpts: {
-                content: function(a, index, value) {
+                content: function (a, index, value) {
                     return '[' + findTestName(index) + '] Time difference: ' + (value > 0 ? '+' : '') + value + ' ms';
                 },
                 shifts: {
@@ -199,6 +199,8 @@ reportNgApp.controller('PerformanceCtrl', ["$scope", "$timeout", "ExecutionServi
                         });
                     });
                 }
+            }, function (response) {
+                $scope.noRecords = true;
             });
         };
 

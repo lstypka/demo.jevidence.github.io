@@ -8,14 +8,29 @@ reportNgApp.controller('TestsTrendStatusChartCtrl', ["$scope", "$timeout", "Reco
 
     var init = function () {
         RecordsService.getRecords(function (records) {
-            window.console.log("RECORDS ", records);
-            for(var i = records.length-1; i >=0 ; i--) {
-                xlabels.push("#"+records[i].id);
-                d1.push([records.length - i - 1, records[i].success]);
-                d2.push([records.length - i - 1, records[i].failed]);
-                d3.push([records.length - i - 1, records[i].error]);
-                d4.push([records.length - i - 1, records[i].skipped]);
+            for (var i = records.length - 1; i >= 0; i--) {
+                if (records.length === 1) {
+                    xlabels.push("#0");
+                    d1.push([0, 0]);
+                    d2.push([0, 0]);
+                    d3.push([0, 0]);
+                    d4.push([0, 0]);
+
+                    xlabels.push("#" + records[i].id);
+                    d1.push([records.length - i, records[i].success]);
+                    d2.push([records.length - i, records[i].failed]);
+                    d3.push([records.length - i, records[i].error]);
+                    d4.push([records.length - i, records[i].skipped]);
+                } else {
+                    xlabels.push("#" + records[i].id);
+                    d1.push([records.length - i - 1, records[i].success]);
+                    d2.push([records.length - i - 1, records[i].failed]);
+                    d3.push([records.length - i - 1, records[i].error]);
+                    d4.push([records.length - i - 1, records[i].skipped]);
+                }
             }
+        }, function (response) {
+            $scope.noRecords;
         });
 
         $scope.testsTrendChartData = [
@@ -36,7 +51,7 @@ reportNgApp.controller('TestsTrendStatusChartCtrl', ["$scope", "$timeout", "Reco
             },
             xaxis: {
                 tickFormatter: function (val, axis) {
-                    return xlabels[val]? xlabels[val] : '' ;
+                    return xlabels[val] ? xlabels[val] : '';
                 },
                 color: "black",
                 axisLabel: "Execution",
@@ -54,7 +69,7 @@ reportNgApp.controller('TestsTrendStatusChartCtrl', ["$scope", "$timeout", "Reco
             grid: {
                 hoverable: true,
                 borderWidth: 2,
-                backgroundColor: { colors: ["#EDF5FF", "#ffffff"] }
+                backgroundColor: {colors: ["#EDF5FF", "#ffffff"]}
             },
             legend: {
                 show: true

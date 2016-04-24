@@ -6,9 +6,20 @@ reportNgApp.controller('TestsTrendPerformanceChartCtrl', ["$scope", "$timeout", 
     var init = function () {
         RecordsService.getRecords(function (records) {
             for(var i = records.length-1; i >=0 ; i--) {
-                xlabels.push("#"+records[i].id);
-                executionTime.push([records.length - i - 1, records[i].duration]);
+                if(records.length === 1) {
+                    xlabels.push("#0");
+                    executionTime.push([0, 0]);
+                    xlabels.push("#"+records[i].id);
+                    executionTime.push([1, records[i].duration]);
+                } else {
+                    xlabels.push("#"+records[i].id);
+                    executionTime.push([records.length - i - 1, records[i].duration]);
+                }
+
             }
+
+        }, function(response) {
+            $scope.noRecords;
         });
 
         $scope.testsTrendPerformanceChartData = [

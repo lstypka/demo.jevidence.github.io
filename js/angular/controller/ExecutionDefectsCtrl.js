@@ -1,16 +1,35 @@
-reportNgApp.controller('ExecutionDefectsCtrl', ["$scope", "$routeParams", "ExecutionService", function ($scope, $routeParams, ExecutionService) {
-
-    $scope.allowedStatuses = [
-        {id: 0, style: 'test-error', label: "Error"},
-        {id: 1, style: 'test-failed', label: 'Failed'},
-        {id: 2, style: 'test-default', label: 'All'}];
+reportNgApp.controller('ExecutionDefectsCtrl', ["$scope", "$routeParams", "DefectsService", function ($scope, $routeParams, DefectsService) {
 
     var init = function () {
-        ExecutionService.getExecution($routeParams.executionId, function (response) {
-            $scope.execution = response;
+        $scope.executionId = $routeParams.executionId;
+        DefectsService.getDefects($routeParams.executionId, function (response) {
+            $scope.defects = response;
         });
     };
 
     init();
+
+    $scope.calculateNumberOfTests = function (defect) {
+        return defect.tests.length;
+    };
+
+    $scope.toggleRow = function (defect) {
+        defect.expanded = !defect.expanded;
+    };
+
+    $scope.stringify = function (value) {
+        return JSON.stringify(value);
+    };
+
+    $scope.calculateTotalDefects = function (defects) {
+        if (!defects) {
+            return 0;
+        }
+        var total = 0;
+        for (var i = 0; i < defects.defects.length; i++) {
+            total += defects.defects[i].tests.length;
+        }
+        return total;
+    };
 
 }]);

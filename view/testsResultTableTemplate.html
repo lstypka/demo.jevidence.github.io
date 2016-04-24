@@ -5,9 +5,8 @@
             <div class="panel-body table-responsive">
 
                 <div class="row" ng-if="showSearchPanel">
-                    <div class="col-md-3"><input type="text" ng-model="searchText"
-                                                 class="form-control input-sm pull-right"
-                                                 style="border: none; border-bottom: 1px solid #ddd;"
+                    <div class="col-md-3"><input type="text" ng-model="search.textSearch"
+                                                 style="border: none; border-bottom: 1px solid #ddd; outline: none;"
                                                  placeholder="Search"></div>
                     <div class="col-md-5"></div>
                     <div class="col-md-4">
@@ -73,14 +72,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat-start="testClass in execution.testClasses | testTextFilter:searchText | testStatusFilter:selected:allowedStatuses"
+                    <tr ng-repeat-start="testClass in execution.testClasses | testTextFilter:search.textSearch | testStatusFilter:selected:allowedStatuses"
                         ng-click="toggleRow(testClass);"
                         class="test-class-row"
                         style="cursor: pointer;">
                         <td colspan="2">
                             <i class="fa"
                                ng-class="{'fa-plus-square-o' : !testClass.expanded, 'fa-minus-square-o' : testClass.expanded}"></i>
-                            <span style="margin-left: 10px;">{{testClass.name}}</span>
+                            <span style="margin-left: 10px;"><b>{{testClass.name}}</b></span>
                         </td>
                         <td>{{testClass.duration | timeDurationFilter}}</td>
                         <td style="padding-right: 0px; padding-left: 0px;">
@@ -116,15 +115,15 @@
                                 <div class="row" style="margin-bottom: 15px;">
 
                                     <div class="col-md-4">
-                                                    <span class="label label-success"
+                                                    <span class="label label-success started-at-gradient"
                                                           style="display: block; margin: 15px;">Started: {{test.startedAt}}</span>
                                     </div>
                                     <div class="col-md-4">
-                                                    <span class="label label-danger"
+                                                    <span class="label label-danger finished-at-gradient"
                                                           style="display: block;  margin: 15px;">Finished: {{test.finishedAt}}</span>
                                     </div>
                                     <div class="col-md-4">
-                                                    <span class="label label-primary"
+                                                    <span class="label label-primary duration-gradient"
                                                           style="display: block;  margin: 15px;">Duration: {{test.duration | timeDurationFilter}}</span>
                                     </div>
                                 </div>

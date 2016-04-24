@@ -37,7 +37,6 @@ reportNgApp.controller('ExecutionResultCtrl', ["$scope", "$routeParams", "$locat
         $scope.showSearchPanel = !$location.search().testname;
         ExecutionService.getExecution($routeParams.executionId, function (response) {
             $scope.execution = filterResults(response);
-            window.console.log("EXEC", $scope.execution);
         });
     };
 

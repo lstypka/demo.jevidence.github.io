@@ -6,10 +6,21 @@ reportNgApp.controller('TestsAvgTimeTrendPerformanceChartCtrl', ["$scope", "$tim
     var init = function () {
         RecordsService.getRecords(function (records) {
             for(var i = records.length-1; i >=0 ; i--) {
-                xlabels.push("#"+records[i].id);
-                var avg = records[i].duration / (records[i].success + records[i].skipped + records[i].failed + records[i].error);
-                avgExecutionTime.push([records.length - i - 1, avg]);
+                if(records.length === 1) {
+                    xlabels.push("#0");
+                    avgExecutionTime.push([0, 0]);
+
+                    xlabels.push("#"+records[i].id);
+                    var avg = records[i].duration / (records[i].success + records[i].skipped + records[i].failed + records[i].error);
+                    avgExecutionTime.push([records.length - i, avg]);
+                } else {
+                    xlabels.push("#"+records[i].id);
+                    var avg = records[i].duration / (records[i].success + records[i].skipped + records[i].failed + records[i].error);
+                    avgExecutionTime.push([records.length - i - 1, avg]);
+                }
             }
+        }, function(response) {
+            $scope.noRecords;
         });
 
         $scope.testsAvgTimeTrendPerformanceChartData = [

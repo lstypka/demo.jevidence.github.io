@@ -26,6 +26,8 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
                         });
                     });
                 }
+            }, function(response) {
+                $scope.noRecords = true;
             });
         };
 
