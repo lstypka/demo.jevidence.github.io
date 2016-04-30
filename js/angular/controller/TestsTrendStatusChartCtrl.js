@@ -76,7 +76,7 @@ reportNgApp.controller('TestsTrendStatusChartCtrl', ["$scope", "$timeout", "Reco
             },
             tooltip: true,
             tooltipOpts: {
-                content: "Execution :[%x], Number of [%s tests]: %y",
+                content: "Execution %x, Number of %s tests: %y",
                 shifts: {
                     x: 20,
                     y: 0

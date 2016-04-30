@@ -8,6 +8,7 @@ reportNgApp.controller('RootCtrl', ["$scope", "$timeout", "$location", "Executio
                // think about getting records only one, in the rootCtrl
 
             }, function(data, status, headers, config) {
+                window.console.log("ERROR!!! ", data, status, headers, config);
                 $scope.errorStatus = CANNOT_READ_RECORD_FILE;
             });
         };

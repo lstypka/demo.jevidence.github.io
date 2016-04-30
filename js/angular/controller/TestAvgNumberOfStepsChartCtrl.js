@@ -51,7 +51,7 @@ reportNgApp.controller('TestAvgNumberOfStepsChartCtrl', ["$scope", "$routeParams
         colors: ["#00CF0C", "#0C74CF", "#CFAD0E", "#930FCF", "#CF2A00", "#FFA500", "#FF9567"],
         tooltip: true,
         tooltipOpts: {
-            content: "%s %p.0%",
+            content: "%p.0% percentage of tests have %s steps",
             shifts: {
                 x: 20,
                 y: 0

@@ -35,11 +35,7 @@ reportNgApp.controller('TestAvgTimeChartCtrl', ["$scope", "$routeParams", "Stati
                 },
                 tooltip: true,
                 tooltipOpts: {
-                    content: "[%x] tests for time range %y"/*,
-                    shifts: {
-                        x: 20,
-                        y: 0
-                    }*/
+                    content: "Time range [%y], number of tests: %x"
                 }
             };
         });

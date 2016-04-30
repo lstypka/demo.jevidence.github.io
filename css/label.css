@@ -37,11 +37,11 @@
 .label-test-error,
 .label-test-error[href]:hover,
 .label-test-error[href]:focus {
-    background: #ff354d !important;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #85144b), color-stop(1, #ff1837)) !important;
-    background: -ms-linear-gradient(bottom, #85144b, #ff1837) !important;
-    background: -moz-linear-gradient(center bottom, #85144b 0%, #b11b64 100%) !important;
-    background: -o-linear-gradient(#b11b64, #85144b) !important;
+    background: #ff1e23 !important;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f20c25), color-stop(1, #ff1837)) !important;
+    background: -ms-linear-gradient(bottom, #f20c25, #ff1837) !important;
+    background: -moz-linear-gradient(center bottom, #f20c25 0%, #fb533f 100%) !important;
+    background: -o-linear-gradient(#d70000, #f20c25) !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b11b64', endColorstr='#85144b', GradientType=0) !important;
     color: #fff;
 }

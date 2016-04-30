@@ -42,11 +42,11 @@
 
 .errors-gradient,
 .finished-at-gradient{
-    background: #ff354d !important;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #85144b), color-stop(1, #ff1837)) !important;
-    background: -ms-linear-gradient(bottom, #85144b, #ff1837) !important;
-    background: -moz-linear-gradient(center bottom, #85144b 0%, #b11b64 100%) !important;
-    background: -o-linear-gradient(#b11b64, #85144b) !important;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b11b64', endColorstr='#85144b', GradientType=0) !important;
+    background: #d70000 !important;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d70000), color-stop(1, #ff6b56)) !important;
+    background: -ms-linear-gradient(bottom, #d70000, #ff6b56) !important;
+    background: -moz-linear-gradient(center bottom, #d70000 0%, #ff6b56 100%) !important;
+    background: -o-linear-gradient(#d70000, #ff6b56) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d70000', endColorstr='#ff6b56', GradientType=0) !important;
     color: #fff;
 }
