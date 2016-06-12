@@ -1,0 +1,1 @@
+{"defects":[{"tests":[{"className":"pl.lstypka.jevidence.example.testng.AttachmentTest","testName":"shouldAttachWallpaper","params":{"Execution":"Example attachment test"}}],"exceptionClassName":"java.io.IOException","exceptionMessage":"File not found"}]}

@@ -8,6 +8,7 @@ reportNgApp.controller('DashboardCtrl', ["$scope", "$timeout", "ExecutionService
         var init = function () {
             $scope.calculating = true;
             RecordsService.getRecords(function (records) {
+            $scope.numberOfExecutions = records.length
                 if (!records || records.length === 0) {
                     // no executions
                     return;
