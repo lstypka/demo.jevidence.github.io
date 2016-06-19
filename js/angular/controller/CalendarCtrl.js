@@ -62,6 +62,11 @@ reportNgApp.controller('CalendarCtrl', ["$scope", "$timeout", "SettingsService",
         eventRender: function(event, element) {
              element.attr("href", '#/execution/'+event.executionId+'/overview');
              element.attr("title", event.tooltip);
+             element.attr("data-toggle", 'tooltip');
+             element.attr("data-placement", 'bottom');
+             $timeout(function() {
+                               $('[data-toggle="tooltip"]').tooltip();
+                         }, 500);
              element.mouseenter(function(event) {
                 element.css('cursor', 'pointer');
              });
